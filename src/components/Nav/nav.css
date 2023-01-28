@@ -1,0 +1,13 @@
+ul{
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    width: 75%;
+}
+
+ul li{
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
