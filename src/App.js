@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import Header from './components/Header/Header.js'
+import AddUrl from './components/AddUrl/AddUrl'
+import {useState} from 'react'
 
-function App() {
+function App(props) {
+  let [urls, setUrls] = useState([])
+
+  function addUrl(url, name){
+    if(urls.length >= 10) return;
+    setUrls([...urls, {url, name}])
+  }
+
+  function removeUrl(url, name){
+    const index = urls.findIndex(function (item) {
+      return item.name === name || item.url === url 
+    })
+    urls.splice(index, index+1);
+    setUrls([...urls]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header urls={urls}/>
+      <AddUrl addUrl={addUrl} removeUrl={removeUrl}/>
+    </>
+  )
 }
 
-export default App;
+export default App
