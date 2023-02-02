@@ -15,7 +15,7 @@ function App(props) {
     const index = urls.findIndex(function (item) {
       return item.name === name || item.url === url 
     })
-    urls.splice(index, index+1);
+    urls.splice(index, 1);
     setUrls([...urls]);
   }
 
